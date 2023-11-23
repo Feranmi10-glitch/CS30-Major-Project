@@ -1,34 +1,41 @@
 // Word Scramble
 // Oluwaferanmi Akinremi
-// November 23rd, 2023.
+// November 22nd, 2023.
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let grid;
 let cellSize;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   if (height > width) {
-    cellSize = width/3;
+    cellSize = width/5;
   }
   else {
-    cellSize = height/3;
+    cellSize = height/5;
   }
-  grid = generateEmptyGrid(3, 3);
+  
 }
 
 
 function draw() {
-  background(220);
+  background("black");
   displayGrid();
 }
 
 function displayGrid(){
   for(let y = 0; y < 3; y++){
     for(let x = 0;x < 3; x++){
-      if(grid[y][x] === 0){
-        fill("black");
+      rect(x*cellSize+100, y*cellSize+100, cellSize, cellSize);
+    }
+    for(let y = 0; y < 1; y++){
+      for(let x = 0;x < 5; x++){
+        rect(x*cellSize+800, y*cellSize+250, cellSize, cellSize);
+      }
+      for(let y = 0; y < 1; y++){
+        for(let x = 0;x < 5; x++){
+          rect(x*cellSize+width/2, y*cellSize+500, cellSize, cellSize);
+        }
       }
     }
   }
