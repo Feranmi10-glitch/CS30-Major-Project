@@ -5,6 +5,9 @@
 // - describe what you did to take this project "above and beyond"
 
 let cellSize;
+const GRID_SIZE1 = 3;
+const GRID_SIZE2 = 1;
+const GRID_SIZE3 = 5;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -24,17 +27,17 @@ function draw() {
 }
 
 function displayGrid(){
-  for(let y = 0; y < 3; y++){
-    for(let x = 0;x < 3; x++){
+  for(let y = 0; y < GRID_SIZE1; y++){
+    for(let x = 0;x < GRID_SIZE1; x++){
       rect(x*cellSize+100, y*cellSize+100, cellSize, cellSize);
     }
-    for(let y = 0; y < 1; y++){
-      for(let x = 0;x < 5; x++){
+    for(let y = 0; y < GRID_SIZE2; y++){
+      for(let x = 0;x < GRID_SIZE3; x++){
         rect(x*cellSize+800, y*cellSize+250, cellSize, cellSize);
       }
-      for(let y = 0; y < 1; y++){
-        for(let x = 0;x < 5; x++){
-          rect(x*cellSize+width/2, y*cellSize+500, cellSize, cellSize);
+      for(let y = 0; y < GRID_SIZE2; y++){
+        for(let x = 0;x < GRID_SIZE3; x++){
+          rect(x*cellSize+height/2, y*cellSize+(height-150), cellSize, cellSize);
         }
       }
     }
