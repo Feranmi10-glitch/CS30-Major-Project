@@ -5,19 +5,25 @@
 // - describe what you did to take this project "above and beyond"
 
 let gridArray = [];
+let cols;
+let rows;
 
-class Grid{
+class GridA{
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.gridA = 3;
+    
   }
+
+  display(){
+
+  }
+
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  let theGrid = new Grid(width/2, height/2);
-  gridArray.push(theGrid);
+ 
   
 }
 
