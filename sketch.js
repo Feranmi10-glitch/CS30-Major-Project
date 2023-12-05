@@ -8,6 +8,7 @@ let gridArray = [];
 let colsA = 3;
 let rowsA = 3;
 let w;
+let b;
 let colsB = 1;
 let rowsB = 5;
 
@@ -32,7 +33,7 @@ class GridB{
   }
 
   display(){
-    rect(this.x*w, this.y*w, w, w);
+    rect(this.x*b, this.y*b, b, b);
   }
 
 }
@@ -54,6 +55,19 @@ function setup() {
     }
   }
   
+  if(height > width){
+    b = Math.floor(width/colsB);
+  }
+  else{
+    b = Math.floor(height/rowsB);
+  }
+  
+  for(let y = 0; y < colsB; y++ ){
+    for(let x = 0;  x< rowsB; x++){
+      let cell2 = new GridB(x,y);
+      gridArray.push(cell2);
+    }
+  }
 }
 
 
