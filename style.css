@@ -6,3 +6,13 @@ html, body {
 canvas {
   display: block;
 }
+
+GridA{
+  position: absolute;
+  margin-left: 20px;
+}
+
+GridB{
+  position: fixed;
+  right: 20px;
+}
