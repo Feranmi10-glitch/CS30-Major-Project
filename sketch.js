@@ -5,9 +5,9 @@
 // - describe what you did to take this project "above and beyond"
 
 let gridArray = [];
-let colsA = 3;
-let rowsA = 3;
-let w;
+let colsA;
+let rowsA;
+let w = 200;
 let b;
 let colsB = 1;
 let rowsB = 5;
@@ -29,11 +29,13 @@ class GridB{
   constructor(x, y){
     this.x = x;
     this.y = y;
-    
+    this.letter = "f";
   }
 
   display(){
-    rect(this.x*b, this.y*b, b, b);
+    rect(this.x*b+width/2-80, this.y*b+height/2, b, b);
+    textSize(40)
+    text(this.letter, this.x*b+width/2-80, this.y*b+height/2);
   }
 
 }
@@ -42,10 +44,12 @@ class GridB{
 function setup() {
   createCanvas(windowWidth, windowHeight);
   if(height > width){
-    w = Math.floor(width/colsA);
+    colsA = Math.floor(width/w);
+    rowsA = Math.floor(width/w);
   }
   else{
-    w = Math.floor(height/rowsA);
+    colsA= Math.floor(height/w);
+    rowsA = Math.floor(height/w);
   }
   
   for(let y = 0; y < colsA; y++ ){
