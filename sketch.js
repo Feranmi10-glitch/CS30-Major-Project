@@ -9,8 +9,12 @@ let colsA;
 let rowsA;
 let w = 200;
 let b;
+let c;
 let colsB = 1;
 let rowsB = 5;
+let colsC = 1;
+let rowsC = 5;
+
 
 class GridA{
   constructor(x, y){
@@ -29,17 +33,25 @@ class GridB{
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.letter = "f";
   }
 
   display(){
     rect(this.x*b+width/2-80, this.y*b+height/2, b, b);
-    textSize(40)
-    text(this.letter, this.x*b+width/2-80, this.y*b+height/2);
   }
 
 }
 
+class GridC{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+    this.letter = "F";
+  }
+
+  display(){
+    rect(this.x*c+width/2-400, this.y*c+height/2+230, c, c);
+  }
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -72,15 +84,28 @@ function setup() {
       gridArray.push(cell2);
     }
   }
+
+  if(height > width){
+    c = Math.floor(width/colsC);
+  }
+  else{
+    c = Math.floor(height/rowsC);
+  }
+
+  for(let y = 0; y < colsC; y++ ){
+    for(let x = 0;  x< rowsC; x++){
+      let cell3 = new GridC(x,y);
+      gridArray.push(cell3);
+    }
+  }
 }
 
 
 function draw() {
   background("white");
-  for(let x= 0; x<gridArray.length;x++){
+  for(let x = 0; x < gridArray.length;x++){
     gridArray[x].display();
   }
-  
 }
 
 
