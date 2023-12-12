@@ -45,11 +45,21 @@ class GridC{
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.letter = "F";
   }
 
   display(){
     rect(this.x*c+width/2-400, this.y*c+height/2+230, c, c);
+  }
+}
+
+class GridD{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+  }
+
+  display(){
+    rect(this.x*b+width/2-80, this.y*b+height/2-300, b, b);
   }
 }
 
@@ -95,6 +105,13 @@ function setup() {
   for(let y = 0; y < colsC; y++ ){
     for(let x = 0;  x< rowsC; x++){
       let cell3 = new GridC(x,y);
+      gridArray.push(cell3);
+    }
+  }
+
+  for(let y = 0; y < colsC; y++ ){
+    for(let x = 0;  x< rowsC; x++){
+      let cell3 = new GridD(x,y);
       gridArray.push(cell3);
     }
   }
