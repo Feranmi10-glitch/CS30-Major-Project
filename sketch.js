@@ -130,4 +130,11 @@ function draw() {
   }
 }
 
+function keyPressed(){
+  if(keyCode === "a"){
+    gridArray[15] === "A";
+  }
+
+}
+
 
