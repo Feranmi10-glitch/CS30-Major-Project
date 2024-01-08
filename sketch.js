@@ -41,33 +41,18 @@ class GridB{
 
 }
 
-class GridC{
+class Box1{
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.letter1 = "E";
-    this.letter2 = "N";
-    this.letter3 = "R";
-    this.letter4 = "D";
-    this.letter5 = "O";
   }
 
   display(){
-    rect(this.x*c+width/2-400, this.y*c+height/2+230, c, c);
+    square(this.x*c+width/2-400, this.y*c+height/2+230, c, c);
     text(this.letter1, this.x*c+width/2-400, this.y*c+height/2+230, c, c);
   }
 }
 
-class GridD{
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-  }
-
-  display(){
-    rect(this.x*b+width/2-80, this.y*b+height/2-300, b, b);
-  }
-}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -100,26 +85,7 @@ function setup() {
       gridArray.push(cell2);
     }
   }
-  if(height > width){
-    c = Math.floor(width/colsC);
-  }
-  else{
-    c = Math.floor(height/rowsC);
-  }
 
-  for(let y = 0; y < colsC; y++ ){
-    for(let x = 0;  x< rowsC; x++){
-      let cell3 = new GridC(x,y);
-      gridArray.push(cell3);
-    }
-  }
-
-  for(let y = 0; y < colsC; y++ ){
-    for(let x = 0;  x< rowsC; x++){
-      let cell3 = new GridD(x,y);
-      gridArray.push(cell3);
-    }
-  }
 }
 
 
@@ -130,11 +96,5 @@ function draw() {
   }
 }
 
-function keyPressed(){
-  if(keyCode === "a"){
-    gridArray[15] === "A";
-  }
-
-}
 
 
