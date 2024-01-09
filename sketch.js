@@ -95,9 +95,7 @@ function draw() {
   for(let x = 0; x < gridArray.length;x++){
     gridArray[x].display();
   }
-  for(let person of gridArray){
-    Box1.display;
-  }
+  
  
 }
 
