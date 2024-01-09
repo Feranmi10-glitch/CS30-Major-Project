@@ -45,11 +45,12 @@ class Box1{
   constructor(x, y){
     this.x = x;
     this.y = y;
+    this.size = 100;
   }
 
   display(){
-    square(this.x*c+width/2-400, this.y*c+height/2+230, c, c);
-    text(this.letter1, this.x*c+width/2-400, this.y*c+height/2+230, c, c);
+    fill("blue");
+    square(this.x, this.y, this.size);
   }
 }
 
@@ -85,7 +86,7 @@ function setup() {
       gridArray.push(cell2);
     }
   }
-
+  c = new Box1(width+10, height/2);
 }
 
 
@@ -94,6 +95,10 @@ function draw() {
   for(let x = 0; x < gridArray.length;x++){
     gridArray[x].display();
   }
+  for(let person of gridArray){
+    Box1.display;
+  }
+ 
 }
 
 
