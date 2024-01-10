@@ -8,7 +8,7 @@ let gridArray = [];
 let colsA;
 let rowsA;
 let w = 200;
-let b;
+let u;
 let c;
 let colsB = 1;
 let rowsB = 5;
@@ -45,11 +45,57 @@ class Box1{
   constructor(x, y){
     this.x = x;
     this.y = y;
-    this.size = 100;
+    this.size = 150;
   }
 
   display(){
-    fill("blue");
+    square(this.x, this.y, this.size);
+  }
+}
+class Box2{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+    this.size = 150;
+  }
+
+  display(){
+    square(this.x, this.y, this.size);
+  }
+}
+
+class Box3{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+    this.size = 150;
+  }
+
+  display(){
+    square(this.x, this.y, this.size);
+  }
+}
+
+class Box4{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+    this.size = 150;
+  }
+
+  display(){
+    square(this.x, this.y, this.size);
+  }
+}
+
+class Box5{
+  constructor(x, y){
+    this.x = x;
+    this.y = y;
+    this.size = 150;
+  }
+
+  display(){
     square(this.x, this.y, this.size);
   }
 }
@@ -74,10 +120,10 @@ function setup() {
   }
   
   if(height > width){
-    b = Math.floor(width/colsB);
+    u = Math.floor(width/colsB);
   }
   else{
-    b = Math.floor(height/rowsB);
+    u = Math.floor(height/rowsB);
   }
   
   for(let y = 0; y < colsB; y++ ){
@@ -86,7 +132,7 @@ function setup() {
       gridArray.push(cell2);
     }
   }
-  c = new Box1(width+10, height/2);
+  c = new Box1(width/2-400, height/2 +230);
 }
 
 
@@ -95,7 +141,9 @@ function draw() {
   for(let x = 0; x < gridArray.length;x++){
     gridArray[x].display();
   }
-  
+  for(let i = 0; i < 5; i++){
+    c.display();
+  }
  
 }
 
