@@ -9,7 +9,11 @@ let colsA;
 let rowsA;
 let w = 200;
 let u;
+let a;
+let b;
 let c;
+let d;
+let e;
 let colsB = 1;
 let rowsB = 5;
 let colsC = 1;
@@ -36,7 +40,7 @@ class GridB{
   }
 
   display(){
-    rect(this.x*b+width/2-80, this.y*b+height/2, b, b);
+    rect(this.x*u+width/2-80, this.y*u+height/2, u, u);
   }
 
 }
@@ -50,6 +54,7 @@ class Box1{
 
   display(){
     square(this.x, this.y, this.size);
+    
   }
 }
 class Box2{
@@ -132,7 +137,11 @@ function setup() {
       gridArray.push(cell2);
     }
   }
-  c = new Box1(width/2-400, height/2 +230);
+  a = new Box1(width-400, height/2 +230);
+  b = new Box2(width-570, height/2 +230);
+  c = new Box3(width-740, height/2 +230);
+  d = new Box4(width-910, height/2  +230);
+  e = new Box5(width-1080, height/2 +230);
 }
 
 
@@ -142,7 +151,11 @@ function draw() {
     gridArray[x].display();
   }
   for(let i = 0; i < 5; i++){
+    a.display();
+    b.display();
     c.display();
+    d.display();
+    e.display();
   }
  
 }
