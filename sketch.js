@@ -18,6 +18,11 @@ let colsB = 1;
 let rowsB = 5;
 let colsC = 1;
 let rowsC = 5;
+let eShape;
+
+function preload(){
+  eShape = loadImage("letter E.png");
+}
 
 
 class GridA{
@@ -54,7 +59,7 @@ class Box1{
 
   display(){
     square(this.x, this.y, this.size);
-    
+    image(eShape,width-400, height/2);
   }
 }
 class Box2{
