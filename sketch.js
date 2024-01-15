@@ -19,9 +19,14 @@ let rowsB = 5;
 let colsC = 1;
 let rowsC = 5;
 let eShape;
+let nShape;
+let dShape;
+let rShape;
+let oShape;
 
 function preload(){
   eShape = loadImage("letter E.png");
+  oShape = loadImage("oShape.png");
 }
 
 
@@ -59,7 +64,7 @@ class Box1{
 
   display(){
     square(this.x, this.y, this.size);
-    image(eShape,width-400, height/2);
+    image(eShape,width-400, height/2+230, 150, 150);
   }
 }
 class Box2{
@@ -71,6 +76,7 @@ class Box2{
 
   display(){
     square(this.x, this.y, this.size);
+    image(oShape,width-570, height/2 +230, 150, 150);
   }
 }
 
