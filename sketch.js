@@ -25,8 +25,11 @@ let rShape;
 let oShape;
 
 function preload(){
+  dShape = loadImage("dShape.png");
   eShape = loadImage("letter E.png");
-  oShape = loadImage("oShape.png");
+  nShape = loadImage("nShape.png");
+  oShape = loadImage("letter_o_PNG56.png");
+  rShape = loadImage("rShape.png");
 }
 
 
@@ -89,6 +92,7 @@ class Box3{
 
   display(){
     square(this.x, this.y, this.size);
+    image(rShape,width-740, height/2 +230, 150, 150);
   }
 }
 
@@ -101,6 +105,7 @@ class Box4{
 
   display(){
     square(this.x, this.y, this.size);
+    image(nShape,width-910, height/2 +230, 150, 150);
   }
 }
 
@@ -113,6 +118,7 @@ class Box5{
 
   display(){
     square(this.x, this.y, this.size);
+    image(dShape,width-1080, height/2 +230, 150, 150);
   }
 }
 
@@ -171,5 +177,8 @@ function draw() {
  
 }
 
+function keyPressed(){
+  
+}
 
 
