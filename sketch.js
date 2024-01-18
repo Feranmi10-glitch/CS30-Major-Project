@@ -5,10 +5,13 @@
 // - describe what you did to take this project "above and beyond"
 
 let gridArray = [];
+const xOffset = 20;
+const xSpacing = 170;
+
 let colsA;
 let rowsA;
-let w = 200;
-let u;
+let gridW = 200;
+let gridX;
 let a;
 let b;
 let c;
@@ -32,106 +35,69 @@ function preload(){
   rShape = loadImage("rShape.png");
 }
 
-
-class GridA{
-  constructor(x, y){
+class Grid {
+  constructor(x, y, offset){
     this.x = x;
     this.y = y;
-    
+    this.offset = offset;
+    this.img = null;
   }
 
   display(){
-    rect(this.x*w, this.y*w, w, w);
+    rect(this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
+    if(this.img !== null) {
+      // Display the image at the same coordinates as the rect
+      image(this.img, this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
+    }
+  }
+
+  setImage(img) {
+    this.img = img;
   }
 
 }
 
-class GridB{
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-  }
-
-  display(){
-    rect(this.x*u+width/2-80, this.y*u+height/2, u, u);
-  }
-
-}
-
-class Box1{
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.size = 150;
-  }
-
-  display(){
-    square(this.x, this.y, this.size);
-    image(eShape,width-400, height/2+230, 150, 150);
-  }
-}
-class Box2{
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.size = 150;
-  }
-
-  display(){
-    square(this.x, this.y, this.size);
-    image(oShape,width-570, height/2 +230, 150, 150);
+class GridA extends Grid {
+  constructor(x, y) {
+    super(x, y, [0, 0]);
   }
 }
 
-class Box3{
+class GridB extends Grid{
   constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.size = 150;
-  }
-
-  display(){
-    square(this.x, this.y, this.size);
-    image(rShape,width-740, height/2 +230, 150, 150);
+    super(x, y, [width/2 - 80, height/2]);
   }
 }
 
-class Box4{
+class GridC extends Grid{
   constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.size = 150;
-  }
-
-  display(){
-    square(this.x, this.y, this.size);
-    image(nShape,width-910, height/2 +230, 150, 150);
+    super(x, y, [width/2, height-10]);
   }
 }
 
-class Box5{
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.size = 150;
-  }
+// // class Box{
+// //   constructor(loc, x, y, img){
+// //     this.x = x;
+// //     this.y = y;
+// //     this.size = 150;
+// //     this.img = img;
+// //     this.loc = loc;
+// //   }
 
-  display(){
-    square(this.x, this.y, this.size);
-    image(dShape,width-1080, height/2 +230, 150, 150);
-  }
-}
-
-
+//   display(){
+//     square(this.x-xOffset-xSpacing * this.loc, this.y, this.size);
+//     image(this.img, width-xOffset - xSpacing*this.loc , height/2+230, this.size, this.size);
+//   }
+// }
 function setup() {
   createCanvas(windowWidth, windowHeight);
   if(height > width){
-    colsA = Math.floor(width/w);
-    rowsA = Math.floor(width/w);
+    colsA = Math.floor(width/gridW);
+    rowsA = Math.floor(width/gridW);
   }
   else{
-    colsA= Math.floor(height/w);
-    rowsA = Math.floor(height/w);
+    colsA= Math.floor(height/gridW);
+    rowsA = Math.floor(height/gridW);
   }
   
   for(let y = 0; y < colsA; y++ ){
@@ -142,10 +108,10 @@ function setup() {
   }
   
   if(height > width){
-    u = Math.floor(width/colsB);
+    gridX = Math.floor(width/colsB);
   }
   else{
-    u = Math.floor(height/rowsB);
+    gridX = Math.floor(height/rowsB);
   }
   
   for(let y = 0; y < colsB; y++ ){
@@ -154,11 +120,25 @@ function setup() {
       gridArray.push(cell2);
     }
   }
-  a = new Box1(width-400, height/2 +230);
-  b = new Box2(width-570, height/2 +230);
-  c = new Box3(width-740, height/2 +230);
-  d = new Box4(width-910, height/2  +230);
-  e = new Box5(width-1080, height/2 +230);
+
+  if(height > width){
+    gridX = Math.floor(width/colsC);
+  }
+  else{
+    gridX = Math.floor(height/rowsC);
+  }
+  
+  for(let y = 0; y < colsC; y++ ){
+    for(let x = 0;  x< rowsC; x++){
+      let cell3 = new GridC(x,y);
+      gridArray.push(cell3);
+    }
+  }
+  // a = new Box(1,400, height/2 +230);
+  // b = new Box(2, 400, height/2 +230);
+  // c = new Box(3, 400, height/2 +230);
+  // d = new Box(4, 400, height/2  +230);
+  // e = new Box(5, 400, height/2 +230);
 }
 
 
@@ -167,18 +147,22 @@ function draw() {
   for(let x = 0; x < gridArray.length;x++){
     gridArray[x].display();
   }
-  for(let i = 0; i < 5; i++){
-    a.display();
-    b.display();
-    c.display();
-    d.display();
-    e.display();
-  }
- 
+  // for(let i = 0; i < 5; i++){
+  //   a.display();
+  //   b.display();
+  //   c.display();
+  //   d.display();
+  //   e.display();
+  // }
+  gridArray[10].setImage(eShape);
 }
 
-function keyPressed(){
-  
+function keyTyped(){
+  if(key === "d" ){
+    gridArray[10] = dShape;
+  }
 }
+  
+
 
 
