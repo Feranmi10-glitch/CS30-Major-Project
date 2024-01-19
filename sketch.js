@@ -21,18 +21,21 @@ let colsB = 1;
 let rowsB = 5;
 let colsC = 1;
 let rowsC = 5;
-let eShape;
-let nShape;
-let dShape;
-let rShape;
-let oShape;
+// let eShape;
+// let nShape;
+// let dShape;
+// let rShape;
+// let oShape;
+let letters;
 
 function preload(){
-  dShape = loadImage("dShape.png");
-  eShape = loadImage("letter E.png");
-  nShape = loadImage("nShape.png");
-  oShape = loadImage("letter_o_PNG56.png");
-  rShape = loadImage("rShape.png");
+  letters = {
+    "d": loadImage("dShape.png"),
+    "e" : loadImage("letter E.png"),
+    "n" : loadImage("nShape.png"),
+    "o" : loadImage("letter_o_PNG56.png"),
+    "r" : loadImage("rShape.png"),
+  };
 }
 
 class Grid {
@@ -40,19 +43,19 @@ class Grid {
     this.x = x;
     this.y = y;
     this.offset = offset;
-    this.img = null;
+    this.letter = null;
   }
 
   display(){
     rect(this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
-    if(this.img !== null) {
+    if(this.letter !== null) {
       // Display the image at the same coordinates as the rect
-      image(this.img, this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
+      image(letters[this.letter], this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
     }
   }
 
-  setImage(img) {
-    this.img = img;
+  setLetter(letter) {
+    this.letter = letter;
   }
 
 }
@@ -71,7 +74,7 @@ class GridB extends Grid{
 
 class GridC extends Grid{
   constructor(x, y){
-    super(x, y, [width/2, height-10]);
+    super(x, y, [width/2-400, height/2 +230]);
   }
 }
 
@@ -154,14 +157,41 @@ function draw() {
   //   d.display();
   //   e.display();
   // }
-  gridArray[10].setImage(eShape);
+  gridArray[14].setLetter("e");
+  gridArray[15].setLetter("d");
+  gridArray[16].setLetter("o");
+  gridArray[17].setLetter("n");
+  gridArray[18].setLetter("r");
 }
 
 function keyTyped(){
+  let chosenWord;
+
   if(key === "d" ){
-    gridArray[10] = dShape;
+    chosenWord = "d";
+  }
+  else if(key === "e"){
+    chosenWord  = "e";
+  }
+  else if(key === "n"){
+    chosenWord = "n";
+  }
+  else if(key === "o"){
+    chosenWord = "o";
+  }
+  else if(key === "r"){
+    chosenWord = "r";
+  }
+  for(let i = 9; i<14; i++){
+    if(gridArray[i].letter === null){
+      gridArray[i]. setLetter(chosenWord);
+      return;
+    }
   }
 }
+
+
+
   
 
 
