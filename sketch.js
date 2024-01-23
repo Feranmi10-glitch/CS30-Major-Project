@@ -4,94 +4,7 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-let gridArray = [];
-const xOffset = 20;
-const xSpacing = 170;
-
-let colsA;
-let rowsA;
-let gridW = 200;
-let gridX;
-let a;
-let b;
-let c;
-let d;
-let e;
-let colsB = 1;
-let rowsB = 5;
-let colsC = 1;
-let rowsC = 5;
-// let eShape;
-// let nShape;
-// let dShape;
-// let rShape;
-// let oShape;
-let letters;
-
-function preload(){
-  letters = {
-    "d": loadImage("dShape.png"),
-    "e" : loadImage("letter E.png"),
-    "n" : loadImage("nShape.png"),
-    "o" : loadImage("letter_o_PNG56.png"),
-    "r" : loadImage("rShape.png"),
-  };
-}
-
-class Grid {
-  constructor(x, y, offset){
-    this.x = x;
-    this.y = y;
-    this.offset = offset;
-    this.letter = null;
-  }
-
-  display(){
-    rect(this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
-    if(this.letter !== null) {
-      // Display the image at the same coordinates as the rect
-      image(letters[this.letter], this.x*gridX+this.offset[0], this.y*gridX+this.offset[1], gridX, gridX);
-    }
-  }
-
-  setLetter(letter) {
-    this.letter = letter;
-  }
-
-}
-
-class GridA extends Grid {
-  constructor(x, y) {
-    super(x, y, [0, 0]);
-  }
-}
-
-class GridB extends Grid{
-  constructor(x, y){
-    super(x, y, [width/2 - 80, height/2]);
-  }
-}
-
-class GridC extends Grid{
-  constructor(x, y){
-    super(x, y, [width/2-400, height/2 +230]);
-  }
-}
-
-// // class Box{
-// //   constructor(loc, x, y, img){
-// //     this.x = x;
-// //     this.y = y;
-// //     this.size = 150;
-// //     this.img = img;
-// //     this.loc = loc;
-// //   }
-
-//   display(){
-//     square(this.x-xOffset-xSpacing * this.loc, this.y, this.size);
-//     image(this.img, width-xOffset - xSpacing*this.loc , height/2+230, this.size, this.size);
-//   }
-// }
+//grids
 function setup() {
   createCanvas(windowWidth, windowHeight);
   if(height > width){
@@ -137,11 +50,6 @@ function setup() {
       gridArray.push(cell3);
     }
   }
-  // a = new Box(1,400, height/2 +230);
-  // b = new Box(2, 400, height/2 +230);
-  // c = new Box(3, 400, height/2 +230);
-  // d = new Box(4, 400, height/2  +230);
-  // e = new Box(5, 400, height/2 +230);
 }
 
 
@@ -150,13 +58,6 @@ function draw() {
   for(let x = 0; x < gridArray.length;x++){
     gridArray[x].display();
   }
-  // for(let i = 0; i < 5; i++){
-  //   a.display();
-  //   b.display();
-  //   c.display();
-  //   d.display();
-  //   e.display();
-  // }
   gridArray[14].setLetter("e");
   gridArray[15].setLetter("d");
   gridArray[16].setLetter("o");
@@ -164,32 +65,23 @@ function draw() {
   gridArray[18].setLetter("r");
 }
 
-function keyTyped(){
-  let chosenWord;
-
-  if(key === "d" ){
-    chosenWord = "d";
-  }
-  else if(key === "e"){
-    chosenWord  = "e";
-  }
-  else if(key === "n"){
-    chosenWord = "n";
-  }
-  else if(key === "o"){
-    chosenWord = "o";
-  }
-  else if(key === "r"){
-    chosenWord = "r";
-  }
-  for(let i = 9; i<14; i++){
-    if(gridArray[i].letter === null){
-      gridArray[i]. setLetter(chosenWord);
-      return;
-    }
-  }
+function winGame(){
+  background("white");
+  fill("black");
+  textSize(70);
+  textFont(titleFont);
+  textAlign("center");
+  text("LET'S GO", width/2,height/2 );
 }
 
+function loseGame(){
+  background("white");
+  fill("black");
+  textSize(70);
+  textFont(titleFont);
+  textAlign("center");
+  text("TRY AGAIN BUD", width/2,height/2 );
+}
 
 
   
